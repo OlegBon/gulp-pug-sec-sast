@@ -1,11 +1,11 @@
 # 🧱 Gulp + SAST: Secure Frontend Build
 
-[](https://nodejs.org/)
-[](https://www.npmjs.com/)
-[](https://eslint.org/)
-[](https://www.google.com/search?q=LICENSE)
-[](https://www.google.com/search?q=https://github.com/OlegBon/itvdn-js-pug-ua/actions)
-[](https://www.google.com/search?q=package.json)
+[![Node.js version](https://img.shields.io/badge/node-%3E=18.x-brightgreen)](https://nodejs.org/)
+[![npm version](https://img.shields.io/badge/npm-%3E=9.x-blue)](https://www.npmjs.com/)
+[![ESLint](https://img.shields.io/badge/eslint-%5E8.x-blueviolet)](https://eslint.org/)
+[![License](https://img.shields.io/badge/license-ISC-yellow)](LICENSE)
+[![Build Status](<https://img.shields.io/badge/build-passing%20(with%20SAST)-success>)](https://github.com/OlegBon/itvdn-js-pug-ua/actions)
+[![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-green)](package.json)
 
 Модульний Gulp 5 сетап з інтегрованим **статичним аналізом безпеки (SAST)** за допомогою **ESLint**. Автоматизує збірку (Pug, SCSS, JS) та **блокує** її при виявленні потенційних вразливостей або помилок якості коду. Побудований на ESM, з чистою архітектурою та логуванням.
 
