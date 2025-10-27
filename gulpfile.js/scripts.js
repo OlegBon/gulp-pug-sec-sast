@@ -4,10 +4,10 @@ import plumber from "gulp-plumber";
 import babel from "gulp-babel";
 import concat from "gulp-concat";
 import uglify from "gulp-uglify-es";
-import eslint from "gulp-eslint";
+import eslint from "gulp-eslint-new";
 import browserSyncLib from "browser-sync";
 
-import { paths } from "./path.js"; // Імпортуємо шляхи з файлу path.
+import { paths, root } from "./path.js"; // Імпортуємо шляхи з файлу path.
 import { logTask, logSummary } from "./logger.js"; // Імпортуємо функцію логування
 
 const browserSync = browserSyncLib.create();
@@ -55,22 +55,24 @@ const scriptLint = (env = "dev") => {
   const startTime = Date.now();
   const processed = [];
 
-  return src(target)
-    .pipe(plumber())
-    .pipe(eslint({ fix: true }))
-    .pipe(eslint.format())
-    .pipe(dest((file) => file.base))
-    .pipe(eslint.failAfterError())
-    .on("data", (file) => processed.push(file))
-    .on("end", () => {
-      logTask({
-        env,
-        label: "Валідація JS-файлів",
-        files: processed,
-        startTime,
-        showSize: false,
-      });
-    });
+  return (
+    src(target)
+      // .pipe(plumber())
+      .pipe(eslint({ fix: true, cwd: root, useEslintrc: true }))
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError())
+      .pipe(dest((file) => file.base))
+      .on("data", (file) => processed.push(file))
+      .on("end", () => {
+        logTask({
+          env,
+          label: "Валідація JS-файлів",
+          files: processed,
+          startTime,
+          showSize: false,
+        });
+      })
+  );
 };
 
 // Трансформація + мінімізація

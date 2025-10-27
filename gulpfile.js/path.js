@@ -82,4 +82,4 @@ paths.copy = {
 
 const getPath = (type, env = "src") => paths?.[env]?.[type];
 
-export { paths, getPath };
+export { paths, getPath, root };

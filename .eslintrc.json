@@ -25,6 +25,8 @@
     "no-var": "error",
     "prefer-const": "warn",
     "arrow-body-style": ["error", "as-needed"],
-    "object-shorthand": ["error", "always"]
+    "object-shorthand": ["error", "always"],
+    "no-implied-eval": "error",
+    "no-eval": "error"
   }
 }
