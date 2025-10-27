@@ -1,0 +1,46 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Gulp output
+# src/
+# dev/
+# dist/
+# build/
+
+# Gulp cache
+.cache/
+.tmp/
+.sass-cache/
+
+# Env config
+.env
+.env.local
+.env.*.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Git
+.git/
+
+# Temp files
+*.log
+*.tmp
+*.bak
+*.orig
