@@ -86,8 +86,6 @@ _(Цей розділ можна залишити без змін, оскіль�
 
 ## 📚 Корисні ресурси
 
-_(Цей розділ теж актуальний, але можна додати посилання на ESLint та OWASP):_
-
 - [Gulp.js Documentation](https://gulpjs.com/docs/en/getting-started/quick-start)
 - [Pug.js Guide](https://pugjs.org/api/getting-started.html)
 - [ESLint Documentation](https://www.google.com/search?q=https://eslint.org/docs/latest/) — офіційна документація ESLint
