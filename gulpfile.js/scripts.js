@@ -33,7 +33,7 @@ const moveScripts = (env = "dev") => {
     .on("end", () => {
       logTask({
         env,
-        label: "Копіювання JS-файлів",
+        label: "Copying JS files",
         files: processed,
         startTime,
         showSize: true,
@@ -66,7 +66,7 @@ const scriptLint = (env = "dev") => {
       .on("end", () => {
         logTask({
           env,
-          label: "Валідація JS-файлів",
+          label: "Validating JS files",
           files: processed,
           startTime,
           showSize: false,
@@ -86,7 +86,7 @@ const jsModify = () => {
       babel({
         presets: ["@babel/preset-env"],
         plugins: ["@babel/plugin-transform-spread"],
-      })
+      }),
     )
     .pipe(concat("index.js"))
     .pipe(uglify.default()) // важливо: .default для ESM
@@ -96,7 +96,7 @@ const jsModify = () => {
     .on("end", () => {
       logTask({
         env: "prod",
-        label: "Трансформація та мінімізація JS-файлів",
+        label: "Transforming and minifying JS files",
         files: processed,
         startTime,
         showSize: true,

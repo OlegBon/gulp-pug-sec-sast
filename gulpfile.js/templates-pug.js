@@ -28,7 +28,7 @@ const compileDevPug = () => {
           // Прибрати слеші з void-елементів
           content = content.replace(
             /<(\b(?:meta|link|img|input|br|hr|source|track)\b[^>]*?)\/>/gi,
-            "<$1>"
+            "<$1>",
           );
 
           file.contents = Buffer.from(content);
@@ -36,13 +36,13 @@ const compileDevPug = () => {
         processed.push(file);
         this.push(file);
         cb();
-      })
+      }),
     )
     .pipe(dest(paths.dev.html))
     .on("end", () => {
       logTask({
         env: "dev",
-        label: "Компіляція Pug",
+        label: "Pug compilation",
         files: processed,
         startTime,
         showSize: true,

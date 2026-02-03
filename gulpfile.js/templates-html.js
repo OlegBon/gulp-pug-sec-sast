@@ -23,7 +23,7 @@ const moveHtml = () => {
     .on("end", () => {
       logTask({
         env: "dist",
-        label: "Переміщення HTML",
+        label: "Moving HTML",
         files: processed,
         startTime,
         showSize: true,
@@ -43,7 +43,7 @@ const pathRewriteHtml = () => {
     .on("end", () => {
       logTask({
         env: "dist",
-        label: "Переписування шляхів у HTML",
+        label: "Rewriting paths in HTML",
         files: processed,
         startTime,
         showSize: true,
@@ -68,13 +68,13 @@ const minifyHtml = () => {
         file.contents = Buffer.from(result);
         processed.push(file);
         cb(null, file);
-      })
+      }),
     )
     .pipe(dest(paths.dist.html))
     .on("end", () => {
       logTask({
         env: "dist",
-        label: "Мінімізація HTML",
+        label: "Minimizing HTML",
         files: processed,
         startTime,
         showSize: true,
@@ -97,7 +97,7 @@ const validateHtml = (env = "dist") => {
     .on("end", () => {
       logTask({
         env,
-        label: "Валідація HTML",
+        label: "Validating HTML",
         files: processed,
         startTime,
         showSize: true,

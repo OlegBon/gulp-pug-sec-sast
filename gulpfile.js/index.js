@@ -37,7 +37,7 @@ async function cleanOldFiles(env = "dev") {
 
   logTask({
     env,
-    label: "Очищення файлів",
+    label: "Cleaning files",
     files,
     startTime,
     showSize: false, // true, якщо потрібно бачити (0 Б)
@@ -56,7 +56,7 @@ const cleanRawJs = async () => {
 
   logTask({
     env: "prod",
-    label: "Очищення сирих JS-файлів",
+    label: "Cleaning raw JS files",
     files,
     startTime,
     showSize: false,
@@ -104,18 +104,18 @@ const dev = series(
   moveScriptsSrc,
   lintScriptsDev,
   logDevSummary,
-  watcherSrc
+  watcherSrc,
 );
 const prod = series(
   cleanProdOldFiles,
   parallel(
     series(moveHtml, validateHtmlProd, pathRewriteHtml, minifyHtml),
     series(postcss2cssProd),
-    series(moveScriptsDev, lintScriptsDist, jsModify)
+    series(moveScriptsDev, lintScriptsDist, jsModify),
   ),
   cleanRawJs,
   logProdSummary,
-  startProd
+  startProd,
 );
 
 const buildOnlyProd = series(
@@ -123,10 +123,10 @@ const buildOnlyProd = series(
   parallel(
     series(moveHtml, validateHtmlProd, pathRewriteHtml, minifyHtml),
     series(postcss2cssProd),
-    series(moveScriptsDev, lintScriptsDist, jsModify)
+    series(moveScriptsDev, lintScriptsDist, jsModify),
   ),
   cleanRawJs,
-  logProdSummary
+  logProdSummary,
 );
 
 // Додаткове завдання

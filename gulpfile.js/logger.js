@@ -9,14 +9,14 @@ let summary = {
 // Функція форматування розміру файлу в зручний для читання вигляд
 const formatSize = (bytes) => {
   if (bytes < 1024) return `${bytes} Б`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} КБ`;
-  return `${(bytes / (1024 * 1024)).toFixed(2)} МБ`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} Kb`;
+  return `${(bytes / (1024 * 1024)).toFixed(2)} Mb`;
 };
 
 // Функція логування інформації про виконання завдання
 const logTask = ({
   env = "dev",
-  label = "Операція",
+  label = "Operation",
   files = [],
   startTime,
   showSize = true,
@@ -26,7 +26,7 @@ const logTask = ({
   let totalSize = 0;
 
   console.log(chalk.cyan(`\n[${env}] ${label}`));
-  console.log(chalk.gray(`Кількість: ${count}`));
+  console.log(chalk.gray(`Quantity: ${count}`));
 
   if (count) {
     files.forEach((f) => {
@@ -36,14 +36,14 @@ const logTask = ({
       console.log(chalk.green(` - ${f.relative}${sizeStr}`));
     });
   } else {
-    console.log(chalk.yellow("Файлів не знайдено."));
+    console.log(chalk.yellow("Files not found."));
   }
 
   if (showSize && totalSize > 0) {
-    console.log(chalk.gray(`Загальний розмір: ${formatSize(totalSize)}`));
+    console.log(chalk.gray(`Total size: ${formatSize(totalSize)}`));
   }
 
-  console.log(chalk.magenta(`Час виконання: ${duration} мс\n`));
+  console.log(chalk.magenta(`Execution time: ${duration} ms\n`));
 
   // Оновлюємо загальну статистику
   summary.totalFiles += count;
@@ -54,15 +54,13 @@ const logTask = ({
 // Функція для логування загальної статистики
 const logSummary = (env = "dev") => {
   const task = (done) => {
-    console.log(chalk.bgBlue.white.bold("\nЗагальна статистика білду"));
-    console.log(chalk.white(`Файлів оброблено: ${summary.totalFiles}`));
-    console.log(
-      chalk.white(`Загальний розмір: ${formatSize(summary.totalSize)}`)
-    );
-    console.log(chalk.white(`Загальний час: ${summary.totalTime} мс\n`));
+    console.log(chalk.bgBlue.white.bold("\nTotal build statistics"));
+    console.log(chalk.white(`Files processed: ${summary.totalFiles}`));
+    console.log(chalk.white(`Total size: ${formatSize(summary.totalSize)}`));
+    console.log(chalk.white(`Total time: ${summary.totalTime} ms\n`));
 
     summary = { totalFiles: 0, totalSize: 0, totalTime: 0 };
-    console.log(`✔ Завдання ${env} завершено\n`);
+    console.log(`✔ Task ${env} completed\n`);
 
     done();
   };

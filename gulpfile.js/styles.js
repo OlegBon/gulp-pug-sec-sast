@@ -56,7 +56,7 @@ const postcss2cssProd = () => {
     .on("end", () => {
       logTask({
         env: "dist",
-        label: "Оптимізація CSS",
+        label: "CSS optimisation",
         files: processed,
         startTime,
         showSize: true,
